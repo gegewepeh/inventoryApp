@@ -8,11 +8,9 @@ module.exports = (sequelize, DataTypes) => {
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
-     */ 
+     */
     static associate(models) {
       // define association here
-      ProductShelf.belongsTo(models.Product,{foreignKey:'product_id'})
-      ProductShelf.belongsTo(models.DisplayShelf,{foreignKey:'display_shelf_id'})
     }
   };
   ProductShelf.init({

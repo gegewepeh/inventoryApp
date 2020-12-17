@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send To Display</title>
+</head>
+<body>
+  <%- include ('./partials/navbar.ejs') %>
+  <h4>Send <%= product.name %> to Display Shelves</h4>
+  <h4>Current Amount <%= product.total_amount %></h4>
+  <h4>Amount to Send:</h4>
+  <form action="/display/add/<%= product.id %>" method="POST">
+    <label for="amount">Amount</label>
+    <input type="number" name="amount" id="amount">
+    <br>
+    <br>
+    <select name="dShelves_id" id="dShelves_id">
+      <% dShelves.forEach (e => { %>
+        <option value="<%= e.id %>"><%= e.name %></option>
+      <% }) %>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Move</button>
+  </form>
+</body>
+</html>

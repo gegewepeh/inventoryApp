@@ -8,18 +8,23 @@ module.exports = (sequelize, DataTypes) => {
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
-     */ 
+     */
     static associate(models) {
       // define association here
-      Product.hasMany(models.ProductShelf,{foreignKey:'product_id'})
-      Product.hasMany(models.WarehouseShelf,{foreignKey:'product_id'})
+      Product.belongsToMany(models.DisplayShelf,{
+        through: `ProductShelves`,
+        foreignKey: 'product_id'
+      })
+      Product.belongsTo(models.WarehouseShelf,{foreignKey:'warehouse_id'})
+
     }
   };
   Product.init({
-    product_name: DataTypes.STRING,
-    product_category: DataTypes.STRING,
-    product_amount: DataTypes.INTEGER,
-    product_price:DataTypes.INTEGER
+    name: DataTypes.STRING,
+    total_amount: DataTypes.INTEGER,
+    price: DataTypes.INTEGER,
+    category: DataTypes.STRING,
+    warehouse_id: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Product',

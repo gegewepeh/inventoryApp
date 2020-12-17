@@ -4,9 +4,6 @@ const productRouter = require ('./products')
 const warehouseRouter = require ('./warehouse')
 const displayRouter = require ('./display')
 
-
-const DisplayController = require ('../controllers/DisplayController')
-
 router.get ('/', IndexController.index)
 
 router.use ('/warehouse', warehouseRouter)
