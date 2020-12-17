@@ -21,11 +21,11 @@
     </thead>
     <% products.forEach (e => { %>
       <tr>
-        <td><%- e.name %></td>
-        <td><%- rupiah (e.price) %></td>
-        <td><%- e.category %></td>
-        <td></td>
-        <td><%- e.total_amount %></td>
+        <td><%= e.name %></td>
+        <td><%= rupiah (e.price) %></td>
+        <td><%= e.category %></td>
+        <td><%= e.total_amount %></td>
+        <td><%= e.WarehouseShelf.amount_warehouse %></td>       
         <td></td>
         <td><a href="/products/edit/<%= e.id %>">Edit</a> || <a href="/display/add/<%= e.id %>">Send to Display</a> || <a href="/products/delete/<%= e.id %>">Delete</a></td>
       </tr>

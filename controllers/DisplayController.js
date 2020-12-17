@@ -2,8 +2,10 @@ const {Product, WarehouseShelf, DisplayShelf, ProductShelf} = require ('../model
 
 class DisplayController {
   static index (req, res) {
+    let dShelves 
     DisplayShelf.findAll ()
-      .then (dShelves => {
+      .then (dShelvesData => {
+        dShelves = dShelvesData
         res.render ('display', {dShelves})
       })
       .catch (err => {
@@ -35,10 +37,24 @@ class DisplayController {
     let amountSent = req.body.amount
     let targetDisplay 
     let targetProduct
-    Product.findByPk (targetId)
+    Product.findByPk (targetId, {
+      include: {
+        model: WarehouseShelf
+      }
+    })
     .then (product => {
       targetProduct = product
-      console.log (product)
+      let obj = {
+        amount_warehouse: product.WarehouseShelf.amount_warehouse - amountSent,
+        updatedAt: new Date ()
+      }
+      return WarehouseShelf.update (obj, {
+        where: {
+          id: product.WarehouseShelf.id
+        }
+      })
+    })
+    .then (() => {
       let obj = {
         product_id: targetId,
         display_shelf_id: req.body.dShelves_id
@@ -46,6 +62,7 @@ class DisplayController {
       targetDisplay = obj.display_shelf_id
       return ProductShelf.create (obj)
     })
+
     .then (() => {
       return DisplayShelf.findByPk (targetDisplay)
     })
@@ -62,9 +79,8 @@ class DisplayController {
     })
 
     .then (() => {
-
+      res.redirect ('/products')
     })
-
 
     .catch (err => {
       console.log (err)
