@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "1",
-    "database": "inventory-swalayan",
+    "database": "inventory-swalayan", 
     "host": "localhost",
     "dialect": "postgres"
   },

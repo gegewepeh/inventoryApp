@@ -13,7 +13,7 @@ module.exports = {
         references: { 
           model: { tableName:'WarehouseShelves'},
           key: "id"
-        }
+        } 
       },
       createdAt: {
         allowNull: false,
