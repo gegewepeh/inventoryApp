@@ -2,7 +2,7 @@
 module.exports = {
   up:  (queryInterface, Sequelize) => {
     return queryInterface.createTable('Products', {
-      id: {
+      id: { 
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -17,6 +17,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       product_amount: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      product_price: {
         allowNull: false,
         type: Sequelize.INTEGER
       },
