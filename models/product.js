@@ -12,13 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Product.hasMany(models.ProductShelf,{foreignKey:'product_id'})
-      Product.hasMany(models.WarehouseShelf,{foreignKey:'ProdukId'})
+      Product.hasMany(models.WarehouseShelf,{foreignKey:'product_id'})
     }
   };
   Product.init({
     product_name: DataTypes.STRING,
     product_category: DataTypes.STRING,
-    product_amount: DataTypes.INTEGER
+    product_amount: DataTypes.INTEGER,
+    product_price:DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Product',

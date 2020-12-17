@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   WarehouseShelf.init({
-    name_shelf: DataTypes.STRING,
+    shelf_name: DataTypes.STRING,
     product_id: DataTypes.INTEGER
   }, {
     sequelize,

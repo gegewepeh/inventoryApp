@@ -20,6 +20,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      product_price: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
