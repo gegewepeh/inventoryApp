@@ -1,0 +1,38 @@
+'use strict';
+module.exports = {
+  up:  (queryInterface, Sequelize) => {
+    return queryInterface.createTable('ProductShelves', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      product_id: {
+        type: Sequelize.INTEGER,
+        references: { 
+          model: { tabelName:'Products'},
+          key: "Id"
+        }
+      },
+      display_shelf_id: {
+        type: Sequelize.INTEGER,
+        references: { 
+          model: { tabelName:'DisplayShelves'},
+          key: "Id"
+        }
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  down:  (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('ProductShelves');
+  }
+};
