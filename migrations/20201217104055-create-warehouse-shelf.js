@@ -7,8 +7,8 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      name_shelf: {
+      }, 
+      shelf_name: {
         type: Sequelize.STRING
       },
       product_id: {
