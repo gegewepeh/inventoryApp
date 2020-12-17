@@ -7,14 +7,18 @@ class ProductController {
       order : [
         ['id', 'ASC']
       ],
+      include: {
+        model: WarehouseShelf
+      }
     })
       .then (productsData => {
+        console.log(productsData[0].WarehouseShelf.amount_warehouse)
+        
         products = productsData
         return DisplayShelf.findAll ()
         
       })
       .then (dShelves => {
-        
         res.render ('products.ejs', {products})
       })
       .catch (err => {

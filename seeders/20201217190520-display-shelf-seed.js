@@ -13,19 +13,24 @@ module.exports = {
     */
    let data = [
     {
-      name: 'Section 1'
+      name: 'Section 1',
+      amount_display: 0
     },
     {
-      name: 'Section 2'
+      name: 'Section 2',
+      amount_display: 0
     },
     {
-      name: 'Section 3'
+      name: 'Section 3',
+      amount_display: 0
     },
     {
-      name: 'Section 4'
+      name: 'Section 4',
+      amount_display: 0
     },
     {
-      name: 'Section 5'
+      name: 'Section 5',
+      amount_display: 0
     }
   ]
 
