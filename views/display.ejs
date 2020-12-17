@@ -12,14 +12,12 @@
     <thead>
       <th>Name</th>
       <th>Amount</th>
-      <th>Category</th>
       <th>Action</th>
     </thead>
     <% dShelves.forEach (e => { %>
       <tr>
         <td><%- e.name %></td>
-        <td><%- e.amount %></td>
-        <td><%- e.category %></td>
+        <td><%- e.amount_display %></td>
         <td><a href="/display/edit">Edit</a> || <a href="/display/sold/<%= e.id %>">Sold</a></td>
       </tr>
     <% }) %>

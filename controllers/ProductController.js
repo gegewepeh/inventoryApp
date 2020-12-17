@@ -15,10 +15,20 @@ class ProductController {
         console.log(productsData[0].WarehouseShelf.amount_warehouse)
         
         products = productsData
-        return DisplayShelf.findAll ()
-        
+        return DisplayShelf.findAll ({
+          include: {
+            model: Product
+          }
+        })
       })
       .then (dShelves => {
+        // products.forEach (e => {
+        //   e.amountDisplay = 
+        // })
+        // let amountDisplay = dShelves.map (e => {
+        //   return e.amount_d
+        // })
+        console.log(dShelves)
         res.render ('products.ejs', {products})
       })
       .catch (err => {
