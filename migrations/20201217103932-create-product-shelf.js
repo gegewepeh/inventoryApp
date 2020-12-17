@@ -11,15 +11,15 @@ module.exports = {
       product_id: {
         type: Sequelize.INTEGER,
         references: { 
-          model: { tabelName:'Products'},
-          key: "Id"
+          model: { tableName:'Products'},
+          key: "id"
         }
       },
       display_shelf_id: {
         type: Sequelize.INTEGER,
         references: { 
-          model: { tabelName:'DisplayShelves'},
-          key: "Id"
+          model: { tableName:'DisplayShelves'},
+          key: "id"
         }
       },
       createdAt: {

@@ -11,8 +11,8 @@ module.exports = {
       warehouse_shelf_id: {
         type: Sequelize.INTEGER,
         references: { 
-          model: { tabelName:'WarehouseShelves'},
-          key: "Id"
+          model: { tableName:'WarehouseShelves'},
+          key: "id"
         }
       },
       createdAt: {
