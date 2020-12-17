@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       WarehouseShelf.belongsTo(models.Product,{foreignKey:'product_id'})
-      WarehouseShelf.hasMany(models.Gudang,{foreignKey:'warehouse_shelf_id'})
+      WarehouseShelf.hasMany(models.Warehouse,{foreignKey:'warehouse_shelf_id'})
     }
   };
   WarehouseShelf.init({

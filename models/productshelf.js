@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-const produk_rak = require('../../inventory-pair-project/models/produk_rak');
+
 module.exports = (sequelize, DataTypes) => {
   class ProductShelf extends Model {
     /**
