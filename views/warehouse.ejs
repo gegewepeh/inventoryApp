@@ -17,8 +17,8 @@
     </thead>
     <% warehouse.forEach (e => { %>
       <tr>
-        <td><%- e.warehouse_shelf_id %></td>
-        <td>nama produk</td>
+        <td><%- e.shelf_name %></td>
+        <td><%- e.amount_warehouse %></td>
         <td><a href="/warehouse/shelves/ <%= e.id %>">See Contents</a></td>
       </tr>
     <% }) %>

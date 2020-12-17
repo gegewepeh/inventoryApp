@@ -22,7 +22,7 @@
     <% products.forEach (e => { %>
       <tr>
         <td><%- e.name %></td>
-        <td><%- e.price %></td>
+        <td><%- rupiah (e.price) %></td>
         <td><%- e.category %></td>
         <td></td>
         <td><%- e.total_amount %></td>
