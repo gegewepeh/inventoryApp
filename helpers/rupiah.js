@@ -14,7 +14,7 @@ function rupiah (numbers) {
   }
   temp.push (`,00`)
   output = temp.join ('')
-  return `Rp ${output}`
+  return `Rp. ${output}`
 }
 
 module.exports = rupiah
