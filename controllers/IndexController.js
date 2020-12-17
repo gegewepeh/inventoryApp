@@ -1,6 +1,6 @@
 class IndexController {
   static index (req, res) {
-    res.send ('masuk')
+    res.render ('home.ejs')
   }
 }
 
