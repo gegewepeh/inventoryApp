@@ -12,11 +12,13 @@
   <table border="1px">
     <thead>
       <th>Warehouse Shelf Name</th>
+      <th>Amount</th>
       <th>Action</th>
     </thead>
     <% warehouse.forEach (e => { %>
       <tr>
         <td><%- e.warehouse_shelf_id %></td>
+        <td>nama produk</td>
         <td><a href="/warehouse/shelves/ <%= e.id %>">See Contents</a></td>
       </tr>
     <% }) %>

@@ -11,15 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      DisplayShelf.hasMany(models.ProductShelf,{foreignKey:'display_shelf_id'})
+      DisplayShelf.belongsToMany(models.Product,{
+        through: 'ProductShelves',
+        foreignKey: 'display_shelf_id'
+      })
     }
   };
   DisplayShelf.init({
     name: DataTypes.STRING,
-    product_id: DataTypes.INTEGER
+    amount_display: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'DisplayShelf',
   });
   return DisplayShelf;
-}; 
+};

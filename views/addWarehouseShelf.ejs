@@ -8,9 +8,10 @@
 <body>
   <%- include ('./partials/navbar.ejs') %>
   <h3>Add Warehouse Shelf</h3>
-  <form action="/warehouse/shelves/add">
+  <form action="/warehouse/shelves/add" method="POST">
     <label for="shelf_name">Shelf Name</label>
-    <input type="text" name="shelf_name" id="shelf_name">
+    <input type="text">
+    <button type="submit">Add Shelf</button>
   </form>
 </body>
 </html>

@@ -8,19 +8,26 @@
 <body>
   <%- include ('./partials/navbar.ejs') %>
   <h3>Products List</h3>
+  <h4><a href="/products/add">Add Product</a></h4>
   <table border="1px">
     <thead>
       <th>Name</th>
-      <th>Amount</th>
+      <th>Price</th>
       <th>Category</th>
+      <th>Total Amount</th>
+      <th>Amount in Warehouse</th>
+      <th>In Display</th>
       <th>Action</th>
     </thead>
     <% products.forEach (e => { %>
       <tr>
         <td><%- e.name %></td>
-        <td><%- e.amount %></td>
+        <td><%- e.price %></td>
         <td><%- e.category %></td>
-        <td><a href="/products/edit">Edit</a></td>
+        <td></td>
+        <td><%- e.total_amount %></td>
+        <td></td>
+        <td><a href="/products/edit/<%= e.id %>">Edit</a> || <a href="/display/add/<%= e.id %>">Send to Display</a> || <a href="/products/delete/<%= e.id %>">Delete</a></td>
       </tr>
     <% }) %>
     
