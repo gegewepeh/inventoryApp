@@ -1,15 +1,18 @@
 const router = require ('express').Router()
 const IndexController = require ('../controllers/IndexController')
-const WarehouseController = require ('../controllers/WarehouseController')
-const ProductController = require ('../controllers/ProductController')
+const productRouter = require ('./products')
+const warehouseRouter = require ('./warehouse')
+const displayRouter = require ('./display')
+
+
 const DisplayController = require ('../controllers/DisplayController')
 
 router.get ('/', IndexController.index)
 
-router.use ('/warehouse', WarehouseController.index)
+router.use ('/warehouse', warehouseRouter)
 
-router.use ('/products', ProductController.index)
+router.use ('/products', productRouter)
 
-router.use ('/display', DisplayController.index)
+router.use ('/display', displayRouter)
 
 module.exports = router
