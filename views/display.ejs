@@ -12,7 +12,6 @@
     <thead>
       <th>Name</th>
       <th>Amount</th>
-      <th>Price</th>
       <th>Category</th>
       <th>Action</th>
     </thead>
@@ -20,9 +19,8 @@
       <tr>
         <td><%- e.name %></td>
         <td><%- e.amount %></td>
-        <td> price </td>
         <td><%- e.category %></td>
-        <td><a href="/display/edit">Edit</a></td>
+        <td><a href="/display/edit">Edit</a> || <a href="/display/sold/<%= e.id %>">Sold</a></td>
       </tr>
     <% }) %>
     

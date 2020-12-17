@@ -1,4 +1,4 @@
-const {Product, WarehouseShelf, DisplayShelf} = require ('../models/index')
+const {Product, WarehouseShelf, DisplayShelf, ProductShelf} = require ('../models/index')
 
 class DisplayController {
   static index (req, res) {
@@ -33,33 +33,43 @@ class DisplayController {
   static postAdd (req, res) {
     let targetId = +req.params.id
     let amountSent = req.body.amount
+    let targetDisplay 
     let targetProduct
-    Product.findByPk (targetId, {
-      include : {
-        model: WarehouseShelf
+    Product.findByPk (targetId)
+    .then (product => {
+      targetProduct = product
+      console.log (product)
+      let obj = {
+        product_id: targetId,
+        display_shelf_id: req.body.dShelves_id
       }
+      targetDisplay = obj.display_shelf_id
+      return ProductShelf.create (obj)
     })
-      .then (product => {
-        targetProduct = product
-        
-        return WarehouseShelf.update ({
-          where : {
-            id: product.warehouse_id
-          }
-        })
-      .then (() => {
-        let totalAmount = targetProduct.total_amount - amountSent
-        let obj = {
-          total_amount: totalAmount,
-          updatedAt: new Date ()
+    .then (() => {
+      return DisplayShelf.findByPk (targetDisplay)
+    })
+    .then (displayShelf => {
+      let obj2 = {
+        amount_display: displayShelf.amount_display + amountSent,
+        updatedAt: new Date ()
+      }
+      return DisplayShelf.update (obj2, {
+        where: {
+          id: targetDisplay
         }
-        return Product.update ({
-          where: {
-            id: targetId
-          }
-        })
       })
-      })
+    })
+
+    .then (() => {
+
+    })
+
+
+    .catch (err => {
+      console.log (err)
+      res.send (err)
+    })
   }
 }
 

@@ -1,8 +1,8 @@
-const {Warehouse, Product, WarehouseShelf} = require ('../models/index')
+const {Product, WarehouseShelf} = require ('../models/index')
 
 class WarehouseController {
   static index (req, res) {
-    Warehouse.findAll () 
+    WarehouseShelf.findAll () 
       .then (warehouse => {
         res.render ('warehouse.ejs', {warehouse})
       })

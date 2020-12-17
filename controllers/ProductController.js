@@ -1,4 +1,4 @@
-const {Product, WarehouseShelf, DisplayShelf} = require ('../models/index')
+const {Product, WarehouseShelf, DisplayShelf, ProductShelf} = require ('../models/index')
 
 class ProductController {
   static index (req, res) {
@@ -32,13 +32,34 @@ class ProductController {
 
   static delete (req, res) {
     let targetId = +req.params.id
-    Product.destroy ({
-      where: {
-        id: targetId
+    Product.findByPk (targetId, {
+      include: {
+        model: WarehouseShelf
       }
     })
-      .then (product => {
+      .then ( product => {
+        let resultAmount = product.WarehouseShelf.amount_warehouse - product.total_amount
+        let obj = {
+          amount_warehouse: resultAmount
+        }
+
+        return WarehouseShelf.update (obj, {
+          where: {
+            id: product.WarehouseShelf.id
+          }
+        })
+      
+      .then (() => {
+        return Product.destroy ({
+            where: {
+              id: targetId
+            }
+          })
+      })
+      .then (() => {
         res.redirect ('/products')
+      })
+      
       })
       .catch (err => {
         console.log (err)
@@ -76,8 +97,6 @@ class ProductController {
         res.send (err)
       })
   }
-
-  
 }
 
 module.exports = ProductController
